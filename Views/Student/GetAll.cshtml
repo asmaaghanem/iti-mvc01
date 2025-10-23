@@ -1,0 +1,48 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "GetAllStudents";
+}
+<h1>All Students</h1>
+
+<a href="/Student/Add" class="btn btn-primary">Add</a>
+
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>SSN</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>ImageURL</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.SSN</td>
+                <td>@s.Name</td>
+                <td>@s.Email</td>
+                <td>@s.Age</td>
+                <td>@s.Address</td>
+                <td>@s.ImageURL</td>
+                <td>
+                    <a asp-controller="Student" asp-action="GetBySSN" asp-route-SSN="@s.SSN" class="btn btn-primary btn-sm">Go</a>
+                  </td>
+                <td>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-SSN="@s.SSN" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+
+                <td>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-SSN="@s.SSN" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

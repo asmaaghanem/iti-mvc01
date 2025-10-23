@@ -1,0 +1,17 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Add Course";
+    ViewData["action"] = "Add";
+    ViewData["SubmitButtonText"] = "Add Course";
+
+}
+
+<h1>Add Course</h1>
+
+<partial name="_CourseForm" />
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+

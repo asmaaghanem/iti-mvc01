@@ -1,0 +1,57 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = $"Student Details";
+}
+
+<h2>Student Details</h2>
+<hr />
+
+<div class="card mb-3 p-3">
+    <h4 class="text-primary">@Model.Name</h4>
+    <img src="~/images/@Model.ImageURL" alt="Student Image" class="img-thumbnail rounded-circle" style="max-width:200px;" />
+
+    <p><strong>SSN:</strong> @Model.SSN</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Age:</strong> @Model.Age</p>
+    <p><strong>Address:</strong> @Model.Address</p>
+    <p> <strong>Department:</strong> @Model.Department?.Name </p>
+
+    
+</div>
+
+<hr />
+
+<h4>Courses Enrolled (@(Model.StudentCourses?.Count ?? 0))</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Topic</th>
+            <th>Degree</th>
+            <th>Minimum Degree</th>
+            <th>My Degree</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sc in Model.StudentCourses)
+        {
+            <tr> 
+                <td>@sc.Course.Name</td>
+                <td>@sc.Course.Topic</td>
+                <td>@sc.Course.Degree</td>
+                <td>@sc.Course.MinDegree</td>
+                <td class="@(sc.Grade > sc.Course.MinDegree ? "bg-success text-white" : "bg-danger text-white")" >@sc.Grade</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+

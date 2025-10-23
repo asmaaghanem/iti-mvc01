@@ -1,0 +1,66 @@
+﻿@model LMS.Models.Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h2>Course Details</h2>
+<hr />
+
+<div class="card mb-3 p-3">
+    <h4 class="text-primary">@Model.Name</h4>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Topic:</strong> @Model.Topic</p>
+    <p><strong>Degree:</strong> @Model.Degree</p>
+    <p><strong>MinDegree:</strong> @Model.MinDegree</p>
+</div>
+
+<hr />
+
+<h4>Students Enrolled (@(Model.StudentCourses?.Count ?? 0))</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sc in Model.StudentCourses)
+        {
+            <tr>
+                <td>@sc.Student.Name</td>
+                <td>@sc.Student.Email</td>
+                <td>@sc.Grade</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Instructors Teaching This Course (@(Model.InstructorCourses?.Count ?? 0))</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Instructor Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ic in Model.InstructorCourses)
+        {
+            <tr>
+                <td>@ic.Instructor.Name</td>
+                <td>@ic.Instructor.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

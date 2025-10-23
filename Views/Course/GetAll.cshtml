@@ -1,0 +1,48 @@
+﻿@model List<Course>
+
+@{
+    ViewData["Title"] = "All Courses";
+}
+
+<h1>All Courses</h1>
+
+<a asp-action="Add" asp-controller="Course" class="btn btn-primary">Add</a>
+
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Topic</th>
+            <th>Degree</th>
+            <th>MinDegree</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Id</td>
+                <td>@course.Name</td>
+                <td>@course.Topic</td>
+                <td>@course.Degree</td>
+                <td>@course.MinDegree</td>
+                <td>
+                    <a asp-controller="Course" asp-action="GetById" asp-route-id="@course.Id" class="btn btn-primary btn-sm">Go</a>
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Edit" asp-route-id="@course.Id" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Course" asp-action="Delete" asp-route-id="@course.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

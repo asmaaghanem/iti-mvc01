@@ -1,0 +1,16 @@
+﻿@model LMS.Models.Department
+
+@{
+    ViewData["Title"] = "Add Department";
+    ViewData["action"] = "Add";
+    ViewData["SubmitButtonText"] = "Add Department";
+}
+
+<h1>Add Department</h1>
+
+<partial name="_DepartmentForm" />
+
+<hr />
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

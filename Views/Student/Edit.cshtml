@@ -1,0 +1,16 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+    ViewData["action"] = "Edit";
+    ViewData["SubmitButtonText"] = "Save Changes";
+}
+
+<h1>Edit Student</h1>
+
+<partial name="_StudentForm"/>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+

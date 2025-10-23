@@ -1,0 +1,50 @@
+﻿@model List<Instructor>
+
+@{
+    ViewData["Title"] = "All Instructors";
+}
+
+<h1>All Instructors</h1>
+
+<a asp-action="Add" asp-controller="Instructor" class="btn btn-primary">Add</a>
+
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.Id</td>
+                <td>@instructor.Name</td>
+                <td>@instructor.Email</td>
+                <td>@instructor.Age</td>
+                <td>@instructor.Address</td>
+                <td>@instructor.Salary</td> 
+                <td>
+                    <a asp-controller="Instructor" asp-action="GetById" asp-route-id="@instructor.Id" class="btn btn-primary btn-sm">Go</a>
+                </td>
+                <td>
+                    <a asp-controller="Instructor" asp-action="Edit" asp-route-id="@instructor.Id" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Instructor" asp-action="Delete" asp-route-id="@instructor.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

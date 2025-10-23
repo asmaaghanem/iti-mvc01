@@ -1,0 +1,18 @@
+﻿@model Instructor
+
+@{
+    ViewData["Title"] = "Add";
+    ViewData["action"] = "Add";
+    ViewData["SubmitButtonText"] = "Add Instructor";
+
+}
+
+<h1>Add Instructor</h1>
+
+<partial name="_InstructorForm"/>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+

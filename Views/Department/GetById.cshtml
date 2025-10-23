@@ -1,0 +1,73 @@
+﻿@model Department
+
+@{
+    ViewData["Title"] = $"Department Details";
+}
+
+<h2>Department Details</h2>
+<hr />
+
+<div class="card mb-3 p-3">
+    <h4 class="text-primary">@Model.Name</h4>
+    <p><strong>ID:</strong> @Model.deptId</p>
+    <p><strong>Manager:</strong> @Model.Manager</p>
+    <p><strong>Location:</strong> @Model.Location</p>
+    <p><strong>Branch Type:</strong> @Model.Branches</p>
+</div>
+
+<hr />
+
+<h4>Students (@(Model.Students?.Count ?? 0))</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>SSN</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model.Students)
+        {
+            <tr>
+                <td>@s.SSN</td>
+                <td>@s.Name</td>
+                <td>@s.Email</td>
+                <td>@s.Age</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<hr />
+
+<h4>Instructors (@(Model.Instructors?.Count ?? 0))</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.Instructors)
+        {
+            <tr>
+                <td>@i.Id</td>
+                <td>@i.Name</td>
+                <td>@i.Email</td>
+                <td>@i.Salary</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

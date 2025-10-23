@@ -1,0 +1,55 @@
+﻿@model List<Department>
+
+@{
+    ViewData["Title"] = "All Departments";
+}
+<h1>All Departments</h1>
+
+
+<a href="/Department/Add" class="btn btn-primary  mb-3">Add</a>
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Manager</th>
+            <th>Location</th>
+            <th>Branches</th>
+            <th>Students</th>
+            <th>Instructors</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Department" asp-action="GetById" asp-route-id="@dept.deptId" class="text-decoration-none text-primary">@dept.deptId</a>
+                </td>
+
+                <td>
+                    <a asp-controller="Department" asp-action="GetByName" asp-route-name="@dept.Name" class="text-decoration-none text-primary">@dept.Name</a>
+                </td>
+
+                <td>@dept.Manager</td>
+                <td>@dept.Location</td>
+                <td>@dept.Branches</td>
+                <td>@(dept.Students?.Count ?? 0)</td>
+                <td>@(dept.Instructors?.Count ?? 0)</td>
+                <td>
+                    <a asp-controller="Department" asp-action="Edit" asp-route-id="@dept.deptId" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+
+                <td>
+                    <a asp-controller="Department" asp-action="Delete" asp-route-id="@dept.deptId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
